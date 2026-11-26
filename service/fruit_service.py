@@ -58,7 +58,7 @@ class FruitService:
             raise HTTPException(status_code=404, detail=f"No fruit found with SKU {sku}")
         return fruit
 
-    def get_fruits(self, search: str = None, category: str = None, status: str = None):
+    def get_fruits(self, search: str, category: str, status: str):
         fruits = self.fruit_repository.get_all_fruits(search, category)
         items = [self.make_response(fruit) for fruit in fruits]
         if status:
